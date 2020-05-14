@@ -30,3 +30,6 @@ var randomTagline1 = descriptors[getRandomIndex(descriptors)];
 var randomTagline2 = descriptors[getRandomIndex(descriptors)];
 
 coverImage.src = randomCover;
+coverTitle.innerText = randomTitle;
+tagline1.innerText = randomTagline1;
+tagline2.innerText = randomTagline2;
