@@ -19,11 +19,23 @@ randomCoverBtn.addEventListener("click", showRandomCover);
 
 // Create your event handlers and other functions here 👇
 function showRandomCover() {
-  currentCover = new Cover(randomizeImage())
+  currentCover = new Cover(randomizeImage(), randomizeTitle(), randomizeTagline1(), randomizeTagline2());
 }
 
 function randomizeImage() {
-  coverImage.src = covers[getRandomIndex(covers)]
+  coverImage.src = covers[getRandomIndex(covers)];
+}
+
+function randomizeTitle() {
+  coverTitle.innerText = titles[getRandomIndex(titles)];
+}
+
+function randomizeTagline1() {
+  tagline1.innerText = descriptors[getRandomIndex(descriptors)];
+}
+
+function randomizeTagline2() {
+  tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
 
@@ -32,10 +44,10 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-var randomCover = covers[getRandomIndex(covers)]
-var randomTitle = titles[getRandomIndex(titles)]
-var randomTagline1 = descriptors[getRandomIndex(descriptors)]
-var randomTagline2 = descriptors[getRandomIndex(descriptors)]
+var randomCover = covers[getRandomIndex(covers)];
+var randomTitle = titles[getRandomIndex(titles)];
+var randomTagline1 = descriptors[getRandomIndex(descriptors)];
+var randomTagline2 = descriptors[getRandomIndex(descriptors)];
 
 coverImage.src = randomCover;
 coverTitle.innerText = randomTitle;
