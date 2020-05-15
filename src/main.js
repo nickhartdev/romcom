@@ -11,10 +11,12 @@ var randomCoverBtn = document.querySelector(".random-cover-button");
 var makeOwnCoverBtn = document.querySelector(".make-new-button");
 var saveCoverBtn = document.querySelector(".save-cover-button");
 var homeBtn = document.querySelector(".home-button");
+var viewSavedBtn = document.querySelector(".view-saved-button");
 
 // Section Elements
 var homeViewPage = document.querySelector(".home-view");
 var formViewPage = document.querySelector(".form-view");
+var savedViewPage = document.querySelector(".saved-view");
 
 
 
@@ -27,6 +29,8 @@ var currentCover;
 // Add your event listeners here 👇
 randomCoverBtn.addEventListener("click", showRandomCover);
 makeOwnCoverBtn.addEventListener("click", showFormPage);
+viewSavedBtn.addEventListener("click", showSavedPage);
+
 
 // Create your event handlers and other functions here 👇
 
@@ -59,6 +63,16 @@ function showFormPage() {
   formViewPage.classList.remove("hidden");
   homeBtn.classList.remove("hidden");
 }
+
+function showSavedPage() {
+  homeViewPage.classList.add("hidden");
+  randomCoverBtn.classList.add("hidden");
+  saveCoverBtn.classList.add("hidden");
+  savedViewPage.classList.remove("hidden");
+  homeBtn.classList.remove("hidden");
+}
+
+
 
 
 // We've provided one function to get you started
