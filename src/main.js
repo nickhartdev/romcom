@@ -19,7 +19,6 @@ var formViewPage = document.querySelector(".form-view");
 var savedViewPage = document.querySelector(".saved-view");
 
 
-
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -30,6 +29,7 @@ var currentCover;
 randomCoverBtn.addEventListener("click", showRandomCover);
 makeOwnCoverBtn.addEventListener("click", showFormPage);
 viewSavedBtn.addEventListener("click", showSavedPage);
+homeBtn.addEventListener("click", showHomePage);
 
 
 // Create your event handlers and other functions here 👇
@@ -72,6 +72,14 @@ function showSavedPage() {
   homeBtn.classList.remove("hidden");
 }
 
+function showHomePage() {
+  savedViewPage.classList.add("hidden");
+  formViewPage.classList.add("hidden");
+  homeBtn.classList.add("hidden");
+  homeViewPage.classList.remove("hidden");
+  saveCoverBtn.classList.remove("hidden");
+  randomCoverBtn.classList.remove("hidden");
+}
 
 
 
