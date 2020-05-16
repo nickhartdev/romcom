@@ -12,12 +12,20 @@ var makeOwnCoverBtn = document.querySelector(".make-new-button");
 var saveCoverBtn = document.querySelector(".save-cover-button");
 var homeBtn = document.querySelector(".home-button");
 var viewSavedBtn = document.querySelector(".view-saved-button");
+var createNewBookBtn = document.querySelector(".create-new-book-button");
 
 // Section Elements
 var homeViewPage = document.querySelector(".home-view");
 var formViewPage = document.querySelector(".form-view");
 var savedViewPage = document.querySelector(".saved-view");
 
+//Form input fields
+var coverImageInput = document.querySelector("#cover");
+var titleInput = document.querySelector("#title");
+var descriptor1Input = document.querySelector("#descriptor1");
+var descriptor2Input = document.querySelector("#descriptor2");
+
+//global variables
 
 // We've provided a few variables below
 var savedCovers = [
@@ -30,6 +38,7 @@ randomCoverBtn.addEventListener("click", showRandomCover);
 makeOwnCoverBtn.addEventListener("click", showFormPage);
 viewSavedBtn.addEventListener("click", showSavedPage);
 homeBtn.addEventListener("click", showHomePage);
+createNewBookBtn.addEventListener("click", saveCreatedCover);
 
 
 // Create your event handlers and other functions here 👇
@@ -79,6 +88,31 @@ function showHomePage() {
   homeViewPage.classList.remove("hidden");
   saveCoverBtn.classList.remove("hidden");
   randomCoverBtn.classList.remove("hidden");
+}
+
+function saveCreatedCover(event) {
+  event.preventDefault();
+  var coverUrl = coverImageInput.value;
+  var title = titleInput.value;
+  var descriptor1 = descriptor1Input.value;
+  var descriptor2 = descriptor2Input.value;
+  covers.push(coverUrl);
+  titles.push(title);
+  descriptors.push(descriptor1, descriptor2);
+  currentCover = new Cover(coverUrl, title, descriptor1, descriptor2);
+  displayCreatedCover();
+}
+
+function displayCreatedCover() {
+  var coverUrl = coverImageInput.value;
+  var title = titleInput.value;
+  var descriptor1 = descriptor1Input.value;
+  var descriptor2 = descriptor2Input.value;
+  coverImage.src = coverUrl;
+  coverTitle.innerText = title;
+  tagline1.innerText = descriptor1;
+  tagline2.innerText = descriptor2;
+  showHomePage()
 }
 
 
