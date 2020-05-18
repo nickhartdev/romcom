@@ -1,5 +1,3 @@
-// Create variables targetting the relevant DOM elements here 👇
-
 // Book Cover Element
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
@@ -76,7 +74,7 @@ function showHomePage() {
 }
 
 // Saving user created covers
-function saveCreatedCover() {
+function saveCreatedCover(event) {
   covers.push(coverImageInput.value);
   titles.push(titleInput.value);
   descriptors.push(descriptor1Input.value, descriptor2Input.value);
@@ -95,11 +93,12 @@ function displayCreatedCover() {
 // Cover saving functions
 function saveCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerHTML, tagline1.innerHTML, tagline2.innerHTML);
-  // need to figure out how to prevent duplicates from popping up in saved covers array...
+  // need to figure out how to prevent duplicates from getting added to the array...
   savedCovers.push(currentCover);
 }
 
 function showSavedCovers() {
+  savedCoversSection.innerHTML = ''; // went ahead and added this - on rendering, starts with a fresh slate
   for (i = 0; i < savedCovers.length; i++) {
     savedCoversSection.insertAdjacentHTML('afterbegin', `<section class='mini-cover'>
     <img class="cover-image" src=${savedCovers[i].cover}><h2 class="cover-title">${savedCovers[i].title}</h2>
@@ -107,7 +106,6 @@ function showSavedCovers() {
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png"></section>`)
   }
-  // need to figure out how to remove all list html elements when switching to any page other than the saved pages view
 }
 
 // Misc functions
