@@ -42,22 +42,9 @@ saveCoverBtn.addEventListener("click", saveCover);
 
 // Randomized Book Cover Functions
 function showRandomCover() {
-  currentCover = new Cover(randomizeImage(), randomizeTitle(), randomizeTagline1(), randomizeTagline2());
-}
-
-function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)];
-}
-
-function randomizeTitle() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
-}
-
-function randomizeTagline1() {
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-}
-
-function randomizeTagline2() {
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
@@ -88,8 +75,8 @@ function showHomePage() {
   randomCoverBtn.classList.remove("hidden");
 }
 
+// Saving user created covers
 function saveCreatedCover() {
-  currentCover = new Cover(coverImageInput.value, titleInput.value, descriptor1Input.value, descriptor2Input.value);
   covers.push(coverImageInput.value);
   titles.push(titleInput.value);
   descriptors.push(descriptor1Input.value, descriptor2Input.value);
@@ -105,27 +92,28 @@ function displayCreatedCover() {
   showHomePage();
 }
 
+// Cover saving functions
 function saveCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerHTML, tagline1.innerHTML, tagline2.innerHTML);
+  // need to figure out how to prevent duplicates from popping up in saved covers array...
   savedCovers.push(currentCover);
-  savedCoversSection.insertAdjacentHTML('afterbegin', `<section class='mini-cover'>
-  <img class="cover-image" src=${currentCover.cover}><h2 class="cover-title">${currentCover.title}</h2>
-  <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
-  <img class="price-tag" src="./assets/price.png">
-  <img class="overlay" src="./assets/overlay.png"></section>`)
 }
-//
-// function showSavedCovers() {
-//   for (i = 0; i < savedCovers.length; i++) {
-//   }
-// }
 
+function showSavedCovers() {
+  for (i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.insertAdjacentHTML('afterbegin', `<section class='mini-cover'>
+    <img class="cover-image" src=${savedCovers[i].cover}><h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png"></section>`)
+  }
+  // need to figure out how to remove all list html elements when switching to any page other than the saved pages view
+}
+
+// Misc functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// Shows random cover on page reload
-coverImage.src = covers[getRandomIndex(covers)];
-coverTitle.innerText = titles[getRandomIndex(titles)];
-tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+// Functions to execute on page load
+showRandomCover();
