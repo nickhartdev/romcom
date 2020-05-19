@@ -26,22 +26,22 @@ This project was done completely remotely via video calls over a 6 day period. W
 
 ## Progression ##
 
-**Iteration 0**
+#### Iteration 0
 
 ![Demonstrating generation of random book cover on page refresh](https://user-images.githubusercontent.com/60753853/82389417-5a5a5f80-99f9-11ea-973c-2b716f10b641.gif)
 
-**Iteration 1**
+#### Iteration 1
 
 ![Demonstrating functionality of "Show Random Cover" button](https://user-images.githubusercontent.com/60753853/82389473-8675e080-99f9-11ea-9fb4-9b0a2f4a3b20.gif)
 
-**Iteration 2**
+#### Iteration 2
 
 ![Demonstrating navigation between different screen views](https://user-images.githubusercontent.com/60753853/82389474-883fa400-99f9-11ea-8287-42a3c99197ae.gif) 
 
-**Iteration 3**
+#### Iteration 3
 
 ![Demonstrating user generated cover form, as well as displaying user generated form](https://user-images.githubusercontent.com/60753853/82389477-8a096780-99f9-11ea-9757-f81ecceb0edf.gif)
 
-**Iteration 4**
+#### Iteration 4
 
 ![Demonstrating saving and viewing covers, showing the saved covers in gallery view](https://user-images.githubusercontent.com/60753853/82389482-8c6bc180-99f9-11ea-8576-c8eaadbbd30d.gif)
