@@ -53,6 +53,8 @@ function showFormPage() {
   saveCoverBtn.classList.add("hidden");
   formViewPage.classList.remove("hidden");
   homeBtn.classList.remove("hidden");
+  savedViewPage.classList.add("hidden");
+
 }
 
 function showSavedPage() {
@@ -61,6 +63,7 @@ function showSavedPage() {
   saveCoverBtn.classList.add("hidden");
   savedViewPage.classList.remove("hidden");
   homeBtn.classList.remove("hidden");
+  formViewPage.classList.add("hidden");
   showSavedCovers();
 }
 
