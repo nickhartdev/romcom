@@ -24,13 +24,13 @@ var titleInput = document.querySelector("#title");
 var descriptor1Input = document.querySelector("#descriptor1");
 var descriptor2Input = document.querySelector("#descriptor2");
 
-// We've provided a few variables below
+// global variables
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+//event listeners
 randomCoverBtn.addEventListener("click", showRandomCover);
 makeOwnCoverBtn.addEventListener("click", showFormPage);
 viewSavedBtn.addEventListener("click", showSavedPage);
@@ -102,7 +102,7 @@ function saveCover() {
 }
 
 function showSavedCovers() {
-  savedCoversSection.innerHTML = ''; // went ahead and added this - on rendering, starts with a fresh slate
+  savedCoversSection.innerHTML = '';
   for (i = 0; i < savedCovers.length; i++) {
     savedCoversSection.insertAdjacentHTML('afterbegin', `<section class='mini-cover'>
     <img class="cover-image" src=${savedCovers[i].cover}><h2 class="cover-title">${savedCovers[i].title}</h2>
