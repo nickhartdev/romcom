@@ -93,7 +93,11 @@ function displayCreatedCover() {
 // Cover saving functions
 function saveCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerHTML, tagline1.innerHTML, tagline2.innerHTML);
-  // need to figure out how to prevent duplicates from getting added to the array...
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (currentCover.cover == savedCovers[i].cover && currentCover.title == savedCovers[i].title && currentCover.tagline1  == savedCovers[i].tagline1 && currentCover.tagline2 == savedCovers[i].tagline2) {
+      return;
+    }
+  }
   savedCovers.push(currentCover);
 }
 
