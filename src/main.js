@@ -1,5 +1,3 @@
-// Create variables targetting the relevant DOM elements here 👇
-
 // Book Cover Element
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
@@ -18,6 +16,7 @@ var createNewBookBtn = document.querySelector(".create-new-book-button");
 var homeViewPage = document.querySelector(".home-view");
 var formViewPage = document.querySelector(".form-view");
 var savedViewPage = document.querySelector(".saved-view");
+var savedCoversSection = document.querySelector(".saved-covers-section")
 
 //Form input fields
 var coverImageInput = document.querySelector("#cover");
@@ -25,42 +24,25 @@ var titleInput = document.querySelector("#title");
 var descriptor1Input = document.querySelector("#descriptor1");
 var descriptor2Input = document.querySelector("#descriptor2");
 
-//global variables
-
-// We've provided a few variables below
+// global variables
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
 
-// Add your event listeners here 👇
+//event listeners
 randomCoverBtn.addEventListener("click", showRandomCover);
 makeOwnCoverBtn.addEventListener("click", showFormPage);
 viewSavedBtn.addEventListener("click", showSavedPage);
 homeBtn.addEventListener("click", showHomePage);
 createNewBookBtn.addEventListener("click", saveCreatedCover);
-
-
-// Create your event handlers and other functions here 👇
+saveCoverBtn.addEventListener("click", saveCover);
 
 // Randomized Book Cover Functions
 function showRandomCover() {
-  currentCover = new Cover(randomizeImage(), randomizeTitle(), randomizeTagline1(), randomizeTagline2());
-}
-
-function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)];
-}
-
-function randomizeTitle() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
-}
-
-function randomizeTagline1() {
   tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-}
-
-function randomizeTagline2() {
   tagline2.innerText = descriptors[getRandomIndex(descriptors)];
 }
 
@@ -79,6 +61,7 @@ function showSavedPage() {
   saveCoverBtn.classList.add("hidden");
   savedViewPage.classList.remove("hidden");
   homeBtn.classList.remove("hidden");
+  showSavedCovers();
 }
 
 function showHomePage() {
@@ -90,39 +73,49 @@ function showHomePage() {
   randomCoverBtn.classList.remove("hidden");
 }
 
+// Saving user created covers
 function saveCreatedCover(event) {
-  event.preventDefault();
-  var coverUrl = coverImageInput.value;
-  var title = titleInput.value;
-  var descriptor1 = descriptor1Input.value;
-  var descriptor2 = descriptor2Input.value;
-  covers.push(coverUrl);
-  titles.push(title);
-  descriptors.push(descriptor1, descriptor2);
-  currentCover = new Cover(coverUrl, title, descriptor1, descriptor2);
+  covers.push(coverImageInput.value);
+  titles.push(titleInput.value);
+  descriptors.push(descriptor1Input.value, descriptor2Input.value);
   displayCreatedCover();
+  event.preventDefault();
 }
 
 function displayCreatedCover() {
-  var coverUrl = coverImageInput.value;
-  var title = titleInput.value;
-  var descriptor1 = descriptor1Input.value;
-  var descriptor2 = descriptor2Input.value;
-  coverImage.src = coverUrl;
-  coverTitle.innerText = title;
-  tagline1.innerText = descriptor1;
-  tagline2.innerText = descriptor2;
-  showHomePage()
+  coverImage.src = coverImageInput.value;
+  coverTitle.innerText = titleInput.value;
+  tagline1.innerText = descriptor1Input.value;
+  tagline2.innerText = descriptor2Input.value;
+  showHomePage();
 }
 
+// Cover saving functions
+function saveCover() {
+  currentCover = new Cover(coverImage.src, coverTitle.innerHTML, tagline1.innerHTML, tagline2.innerHTML);
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (currentCover.cover == savedCovers[i].cover && currentCover.title == savedCovers[i].title && currentCover.tagline1  == savedCovers[i].tagline1 && currentCover.tagline2 == savedCovers[i].tagline2) {
+      return;
+    }
+  }
+  savedCovers.push(currentCover);
+}
 
+function showSavedCovers() {
+  savedCoversSection.innerHTML = '';
+  for (i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.insertAdjacentHTML('afterbegin', `<section class='mini-cover'>
+    <img class="cover-image" src=${savedCovers[i].cover}><h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png"></section>`)
+  }
+}
 
-// We've provided one function to get you started
+// Misc functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-coverImage.src = covers[getRandomIndex(covers)];
-coverTitle.innerText = titles[getRandomIndex(titles)];
-tagline1.innerText = descriptors[getRandomIndex(descriptors)];
-tagline2.innerText = descriptors[getRandomIndex(descriptors)];
+// Functions to execute on page load
+showRandomCover();
