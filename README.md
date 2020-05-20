@@ -8,7 +8,7 @@ Deployed site: https://nickhartdev.github.io/romcom/
 
 ## Overview ##
 
-RomCom is an app that lets the user randomly generate, create, save and view their own romantic novel covers using HTML, CSS and vanilla JavaScript.  
+RomCom is a single page app that lets the user randomly generate, create, save and view their own romantic novel covers using HTML, CSS and vanilla JavaScript.  
 
 Link to project outline: https://frontend.turing.io/projects/module-1/romcom-pair.html
 
@@ -26,22 +26,20 @@ This project was done completely remotely via video calls over a 6 day period. W
 
 ## Progression ##
 
-#### Iteration 0
+#### Random Functionality (Iterations 0, 1, 2)
 
-![Demonstrating generation of random book cover on page refresh](https://user-images.githubusercontent.com/60753853/82389417-5a5a5f80-99f9-11ea-973c-2b716f10b641.gif)
+![Demonstrating functionality of "Show Random Cover" button](https://user-images.githubusercontent.com/60753853/82389473-8675e080-99f9-11ea-9fb4-9b0a2f4a3b20.gif)  
 
-#### Iteration 1
+When the 'Show Random Cover' button was pressed, it triggered a function that put a cover together by pulling from a few arrays - one for the cover, one for the title, and then the two descriptors were pulled from the same array. We also implemented navigation by changing element visibility.
 
-![Demonstrating functionality of "Show Random Cover" button](https://user-images.githubusercontent.com/60753853/82389473-8675e080-99f9-11ea-9fb4-9b0a2f4a3b20.gif)
+#### Saving User Created Covers (Iteration 3)
 
-#### Iteration 2
+![Demonstrating user generated cover form, as well as displaying user generated form](https://user-images.githubusercontent.com/60753853/82389477-8a096780-99f9-11ea-9757-f81ecceb0edf.gif)  
 
-![Demonstrating navigation between different screen views](https://user-images.githubusercontent.com/60753853/82389474-883fa400-99f9-11ea-8287-42a3c99197ae.gif) 
+After setting up navigation by manipulating the visibility of various elements, we then set up a feature that allows the user to create their own pages by pushing their field inputs to the same arrays from the last step - and then assigning those values to elements we accessed with query selectors to actually display them on the home page.
 
-#### Iteration 3
+#### Saving Covers and looking at them in a Gallery (Iteration 4)
 
-![Demonstrating user generated cover form, as well as displaying user generated form](https://user-images.githubusercontent.com/60753853/82389477-8a096780-99f9-11ea-9757-f81ecceb0edf.gif)
+![Demonstrating saving and viewing covers, showing the saved covers in gallery view](https://user-images.githubusercontent.com/60753853/82389482-8c6bc180-99f9-11ea-8576-c8eaadbbd30d.gif)  
 
-#### Iteration 4
-
-![Demonstrating saving and viewing covers, showing the saved covers in gallery view](https://user-images.githubusercontent.com/60753853/82389482-8c6bc180-99f9-11ea-8576-c8eaadbbd30d.gif)
+By clicking the "Save Cover" button, the cover displayed on the home page is added to an array of saved covers, and then that array is used to display all covers in the saved covers screen.
